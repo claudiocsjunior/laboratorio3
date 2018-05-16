@@ -1,0 +1,123 @@
+/**
+* @file   produto.cpp
+* @brief  Responsável por gerênciar os produtos
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#include <iostream> /**< Inclusão da lib iostream*/
+#include "../include/produto.h" /**< Inclusão da classe produto.h*/
+
+/**
+* @brief Construtor padrão do objeto
+*/
+Produto::Produto() {}
+
+/**
+* @brief Construtor parãmetrizado do objeto
+*/
+Produto::~Produto(){}
+
+/**
+* @brief Destrutor do objeto
+*/
+Produto::Produto(std::string _codigo, std::string _descricao, double _preco):
+	m_cod_barras(_codigo), m_descricao(_descricao), m_preco(_preco) {}
+
+/**
+* @brief Método de acesso para o atributo codigo de barras
+* @return atributo codigo de barras
+*/
+std::string 
+Produto::getCodBarras() {
+	return m_cod_barras;
+}
+
+/**
+* @brief Método de acesso para o atributo descrição
+* @return atributo descrição
+*/
+std::string 
+Produto::getDescricao() {
+	return m_descricao;
+}
+
+/**
+* @brief Método de acesso para o atributo preço
+* @return atributo preço
+*/
+double 
+Produto::getPreco() {
+	return m_preco;
+}
+
+/**
+* @brief método de modificação do valor do atributo codigo
+* @param[in] Recebe codigo do tipo string
+* @return
+*/
+void 
+Produto::setCodBarras(std::string _codigo) {
+	m_cod_barras = _codigo;
+}
+
+/**
+* @brief método de modificação do valor do atributo descrição
+* @param[in] Recebe descrição do tipo string
+* @return
+*/
+void 
+Produto::setDescricao(std::string _descricao) {
+	m_descricao = _descricao;
+}
+
+/**
+* @brief método de modificação do valor do atributo preço
+* @param[in] Recebe preço do tipo double
+* @return
+*/
+void 
+Produto::setPreco(double _preco) {
+	m_preco = _preco;
+}
+
+/**
+* @brief Efetua a sobrecarga do operador <<
+* @param[in] variável para o <<
+* @param[in] Constante para guardar o objeto
+* @return valor do cout
+*/
+std::ostream& operator<< (std::ostream &o, Produto const &p) {
+	return p.print(o);
+}
+
+/**
+* @brief Efetua a sobrecarga do operador +
+* @param[in] Recebe o objeto que será somado
+* @return a soma do tipo double
+*/
+double Produto::operator +(Produto& produtoSomado) {
+	return (m_preco + produtoSomado.getPreco());
+}
+
+/**
+* @brief Efetua a sobrecarga do operador -
+* @param[in] Recebe o objeto que será subtraido
+* @return a subtração do tipo double
+*/
+double Produto::operator -(Produto& produtoSubtraido) {
+	return (m_preco - produtoSubtraido.getPreco());
+}
+
+/**
+* @brief Efetua a sobrecarga do operador ==
+* @param[in] Recebe o objeto que será comparado
+* @return booleano
+*/
+bool Produto::operator ==(Produto& produtoComparado){
+	if(m_cod_barras.compare(produtoComparado.getCodBarras()) == 0)
+		return true;
+	else
+		return false;
+}
