@@ -58,6 +58,8 @@ int main(int argc, char const *argv[])
 	bool produtoIgualEncontrado;
 
 	//lendo arquivo de frutas - MOdificar o caminho para o caminho designado
+	//OBS.: Adicionei o caminho completo pois tive problema e o fstream
+	//não estava coseguindo ler o arquivo mesmo que ele tivesse no mesmo diretório do main
 	fstream arqFrutas;
 	arqFrutas.open("/home/claudio/Documentos/UFRN/LPI/laboratorio 3/questao1/frutas.dat");
 
