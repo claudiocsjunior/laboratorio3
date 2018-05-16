@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>Agência: Código-Fonte de include/contaCorrente.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Agência
+   </div>
+   <div id="projectbrief">Gerencia de contas correntes</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Membros&#160;dos&#160;Arquivos</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">contaCorrente.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="contaCorrente_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _CONTACORRENTE_H_ </span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="contaCorrente_8h.html#afa81a9c000e4817aff88c219083d81be">   10</a></span>&#160;<span class="preprocessor">#define _CONTACORRENTE_H_ </span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt; </span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;movimentacao.h&quot; </span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;vector&gt; </span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt; </span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">using namespace std; </span></div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classContaCorrente.html">   19</a></span>&#160;<span class="preprocessor">class ContaCorrente</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::string agencia;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::string numero;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">double</span> saldo;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> status; </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">double</span> limite; </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::vector&lt;Movimentacao&gt; movimentacao;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classContaCorrente.html">ContaCorrente</a>();</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classContaCorrente.html">ContaCorrente</a>();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> std::string&amp; getAgencia() <span class="keyword">const</span>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> setAgencia(<span class="keyword">const</span> std::string&amp; agencia);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">double</span> getLimite() <span class="keyword">const</span>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> setLimite(<span class="keywordtype">double</span> limite);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> std::vector&lt;Movimentacao&gt;&amp; getMovimentacao() <span class="keyword">const</span>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> setMovimentacao(<span class="keyword">const</span> std::vector&lt;Movimentacao&gt;&amp; movimentacao);</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> std::string&amp; getNumero() <span class="keyword">const</span>;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> setNumero(<span class="keyword">const</span> std::string&amp; numero);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">double</span> getSaldo() <span class="keyword">const</span>;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> setSaldo(<span class="keywordtype">double</span> saldo);</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> getStatus() <span class="keyword">const</span>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> setStatus(<span class="keyword">const</span> <span class="keywordtype">int</span> status);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">bool</span> saque(<span class="keywordtype">double</span> valor);</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> deposito(<span class="keywordtype">double</span> valor);</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> tranferencia(<a class="code" href="classContaCorrente.html">ContaCorrente</a> &amp;conta_tranferir, <span class="keywordtype">double</span> valor);</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">double</span> consultar_saldo();</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> consultar_extrato();</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">void</span> add_movimentacao(std::string descricao, <span class="keywordtype">double</span> valor, std::string tipo);</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">friend</span> istream&amp; <a class="code" href="contaCorrente_8cpp.html#a37c613642dd98d1f6ce3d92d5cefb8a5">operator&gt;&gt;</a>(istream &amp;a, <a class="code" href="classContaCorrente.html">ContaCorrente</a> &amp;c);</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">friend</span> ostream&amp; <a class="code" href="contaCorrente_8cpp.html#a09f482fb06d0db118b245a83ba744d53">operator&lt;&lt;</a>(ostream &amp;e, <a class="code" href="classContaCorrente.html">ContaCorrente</a> <span class="keyword">const</span> c);</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">bool</span> operator==(<a class="code" href="classContaCorrente.html">ContaCorrente</a> &amp;conta_comparada);</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;};</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="contaCorrente_8cpp_html_a09f482fb06d0db118b245a83ba744d53"><div class="ttname"><a href="contaCorrente_8cpp.html#a09f482fb06d0db118b245a83ba744d53">operator&lt;&lt;</a></div><div class="ttdeci">ostream &amp; operator&lt;&lt;(ostream &amp;e, ContaCorrente const c)</div><div class="ttdoc">Efetua a sobrecarga do operador &lt;&lt;. </div><div class="ttdef"><b>Definition:</b> contaCorrente.cpp:147</div></div>
+<div class="ttc" id="contaCorrente_8cpp_html_a37c613642dd98d1f6ce3d92d5cefb8a5"><div class="ttname"><a href="contaCorrente_8cpp.html#a37c613642dd98d1f6ce3d92d5cefb8a5">operator&gt;&gt;</a></div><div class="ttdeci">istream &amp; operator&gt;&gt;(istream &amp;a, ContaCorrente &amp;c)</div><div class="ttdoc">Efetua a sobrecarga do operador &gt;&gt; </div><div class="ttdef"><b>Definition:</b> contaCorrente.cpp:132</div></div>
+<div class="ttc" id="classContaCorrente_html"><div class="ttname"><a href="classContaCorrente.html">ContaCorrente</a></div><div class="ttdef"><b>Definition:</b> contaCorrente.h:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>
