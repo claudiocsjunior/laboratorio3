@@ -1,0 +1,21 @@
+#include "../include/bebida.h"
+
+
+Bebida::Bebida() {
+}
+
+Bebida::Bebida(std::string _codigo, std::string _descricao, short _preco,
+		double _teorAlcolico) {
+}
+
+Bebida::~Bebida() {
+}
+
+double Bebida::getTeorAlcolico() {
+}
+
+void Bebida::setTeorAlcolico(double _teorAlcolico) {
+}
+
+std::ostream& Bebida::print(std::ostream& o) const {
+}

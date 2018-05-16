@@ -1,0 +1,15 @@
+#ifndef _CONTAPOUPANCA_H_
+#define _CONTAPOUPANCA_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include <vector>
+#include <stdlib.h>
+
+using namespace std;
+
+class ContaPoupanca : public Conta
+{
+};
+
+#endif

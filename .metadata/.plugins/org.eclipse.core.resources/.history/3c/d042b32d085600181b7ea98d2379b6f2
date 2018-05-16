@@ -1,0 +1,24 @@
+#include "../include/bebida.h"
+#include "../include/produto.h"
+
+
+Bebida::Bebida(){
+}
+
+Bebida::Bebida(std::string _codigo, std::string _descricao, short _preco, double _teorAlcolico):Produto(_codigo, _descricao, _preco){
+	m_teorAlcolico =_teorAlcolico;
+}
+
+Bebida::~Bebida(){
+}
+
+double Bebida::getTeorAlcolico(){
+	return m_teorAlcolico;
+}
+
+void Bebida::setTeorAlcolico(double _teorAlcolico) {
+	m_teorAlcolico = _teorAlcolico;
+}
+
+std::ostream& Bebida::print(std::ostream& o) const {
+}

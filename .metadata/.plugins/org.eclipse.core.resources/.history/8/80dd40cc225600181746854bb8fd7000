@@ -1,0 +1,41 @@
+#include <iomanip>
+#include "../include/roupa.h"
+#include "../include/produto.h"
+
+Roupa::Roupa() {
+}
+
+Roupa::Roupa(std::string _codigo, std::string _descricao, short _preco,
+		std::string _marca, std::string _sexo, int _tamanho):
+		Produto(_codigo, _descricao, _preco), m_marca (_marca), m_sexo(_sexo), m_tamanho(_tamanho)	{
+}
+
+Roupa::~Roupa() {
+}
+
+std::string Roupa::getMarca() {
+	return m_marca;
+}
+
+std::string Roupa::getSexo() {
+	return m_sexo;
+}
+
+int Roupa::getTamanho() {
+	return m_tamanho;
+}
+
+void Roupa::setMarca(std::string _marca) {
+	m_tamanho = _marca;
+}
+
+void Roupa::setSexo(std::string _sexo) {
+	m_sexo = _sexo;
+}
+
+void Roupa::setTamanho(int _tamanho) {
+	m_tamanho = _tamanho;
+}
+
+std::ostream& Roupa::print(std::ostream& o) const {
+}

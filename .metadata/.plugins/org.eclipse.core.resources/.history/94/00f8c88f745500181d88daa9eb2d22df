@@ -1,0 +1,25 @@
+#ifndef _FRUTA_H_
+#define _FRUTA_H_
+
+#include "produto.h"
+
+class Bebida : public Produto
+{
+public:
+	Bebida();
+	Bebida(std::string _codigo, std::string _descricao, short _preco, double _teorAlcolico);
+	~Bebida();
+private:
+	double m_teorAlcolico;
+public:
+	// getters
+	std::string getDataLote();
+	short getValidade();
+	// setters
+	void setDataLote(std::string _data);
+	void setValidade(short _validade);
+private:
+	std::ostream& print(std::ostream &o) const;
+};
+
+#endif

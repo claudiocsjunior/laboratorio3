@@ -1,0 +1,22 @@
+#ifndef _MOVIMENTACAO_H_
+#define _MOVIMENTACAO_H_
+
+#include <iostream>
+
+class Movimentacao
+{
+private:
+	std::string descricao;
+	double valor;
+	std::string tipo; //0 - credito; 1 - debito
+public:
+	Movimentacao();
+	Movimentacao(std::string descricao, double valor, std::string tipo);
+	~Movimentacao();
+	const std::string& getDescricao() const;
+	void setDescricao(const std::string& descricao);
+	double getValor() const;
+	void setValor(double valor);
+};
+
+#endif

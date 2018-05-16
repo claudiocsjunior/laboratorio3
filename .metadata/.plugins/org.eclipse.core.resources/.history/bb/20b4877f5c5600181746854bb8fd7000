@@ -1,0 +1,8 @@
+Movimentacao::Movimentacao() {
+}
+
+Movimentacao::Movimentacao(std::string descricao, double valor, int tipo) {
+}
+
+Movimentacao::~Movimentacao() {
+}

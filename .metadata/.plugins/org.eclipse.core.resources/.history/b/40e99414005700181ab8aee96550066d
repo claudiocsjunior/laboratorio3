@@ -1,0 +1,16 @@
+#ifndef _CONTACORRENTE_H_
+#define _CONTACORRENTE_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include <vector>
+#include <stdlib.h>
+
+using namespace std;
+
+class ContaCorrente : public Conta
+{
+
+};
+
+#endif

@@ -1,0 +1,48 @@
+#ifndef _CONTACORRENTE_H_
+#define _CONTACORRENTE_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include <vector>
+#include <stdlib.h>
+
+using namespace std;
+
+class ContaCorrente
+{
+private:
+	std::string agencia;
+	std::string numero;
+	double saldo;
+	int status; //0 - normal; 1 - especial;
+	double limite; //2000 - default
+	std::vector<Movimentacao> movimentacao;
+	int qtd_movimentacoes;
+public:
+	ContaCorrente();
+	~ContaCorrente();
+	const std::string& getAgencia() const;
+	void setAgencia(const std::string& agencia);
+	double getLimite() const;
+	void setLimite(double limite);
+	const std::vector<Movimentacao>& getMovimentacao() const;
+	void setMovimentacao(const std::vector<Movimentacao>& movimentacao);
+	const std::string& getNumero() const;
+	void setNumero(const std::string& numero);
+	double getSaldo() const;
+	void setSaldo(double saldo);
+	const int getStatus() const;
+	void setStatus(const int status);
+
+	bool saque(double valor);
+	bool deposito(double valor);
+	bool tranferencia(ContaCorrente &conta_transferencia);
+	double consultar_saldo();
+	void consultar_extrato();
+
+	friend istream& operator>>(istream &a, ContaCorrente &c);
+	friend ostream& operator<<(ostream &e, ContaCorrente const c);
+
+};
+
+#endif

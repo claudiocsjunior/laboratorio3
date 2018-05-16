@@ -1,0 +1,24 @@
+#ifndef _AGENCIA_H_
+#define _AGENCIA_H_
+
+#include <iostream>
+#include "contaCorrente.h"
+#include <vector>
+
+class Agencia
+{
+private:
+	int quantidade_contas;
+	std::vector<ContaCorrente> conta_corrente;
+public:
+	Agencia();
+	~Agencia();
+	void adicionar_conta();
+	void excluir_conta();
+	int procurar_posicao_conta_corrente();
+	void funcionalidades();
+	void saque();
+	void deposito();
+};
+
+#endif

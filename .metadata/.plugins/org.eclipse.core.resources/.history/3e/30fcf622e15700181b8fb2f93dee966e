@@ -1,0 +1,42 @@
+/**
+* @file   movimentacao.cpp
+* @brief  Classe responsável por gerênciar os movimentos por conta
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#include "../include/movimentacao.h"
+
+Movimentacao::Movimentacao() {
+}
+
+Movimentacao::Movimentacao(std::string descricao, double valor, std::string tipo):
+	descricao(descricao), valor(valor), tipo(tipo){}
+
+Movimentacao::~Movimentacao() {
+}
+
+const std::string& Movimentacao::getDescricao() const {
+	return descricao;
+}
+
+void Movimentacao::setDescricao(const std::string& descricao) {
+	this->descricao = descricao;
+}
+
+double Movimentacao::getValor() const {
+	return valor;
+}
+
+void Movimentacao::setValor(double valor) {
+	this->valor = valor;
+}
+
+ostream& operator<<(ostream &e, Movimentacao const m){
+	e << "Descrição: "<< m.descricao
+		  << "| Valor: " << m.valor
+		  << "| tipo: " <<  m.tipo
+		  << endl;
+		return e;
+}

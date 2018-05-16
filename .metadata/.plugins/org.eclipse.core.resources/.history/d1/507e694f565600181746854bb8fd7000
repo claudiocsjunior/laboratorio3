@@ -1,0 +1,143 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include "../include/produto.h"
+#include "../include/fruta.h"
+#include "../include/bebida.h"
+#include "../include/roupa.h"
+#include <fstream>
+
+using std::fstream;
+using std::ofstream;
+using std::ifstream;
+using std::ios;
+using std::string;
+using namespace std;
+
+std::vector<std::string> split_string(std::string str, const char* op) {
+	std::vector<std::string> result;
+	std::string rest = str, block;
+	size_t operator_position = rest.find_first_of(op);
+	while (operator_position != std::string::npos) {
+		block = rest.substr(0, operator_position);
+		rest = rest.substr(operator_position + 1);
+		operator_position = rest.find_first_of(op);
+		result.push_back(block);
+	}
+
+	if (rest.length() > 0)
+		result.push_back(rest);
+
+	return result;
+}
+
+
+
+
+int main(int argc, char const *argv[])
+{
+	string line;
+	std::vector<shared_ptr<Produto>> lista;
+	bool produtoIgualEncontrado;
+
+	//lendo arquivo de frutas - MOdificar o caminho para o caminho designado
+	ifstream arqFrutas("/home/claudio/Documentos/UFRN/LPI/laboratorio 3/questao1/frutas.dat");
+
+	if (arqFrutas.is_open())
+	{
+		while (! arqFrutas.eof() )
+		{
+		  getline (arqFrutas,line);
+		  cout << line << endl;
+		  std::vector<std::string> result = split_string(line, ",");
+		  std::string _codigo = result[0];
+		  std::string _descricao = result[1];
+		  double _preco = atof(result[2].c_str());
+		  std::string _data = result[3];
+		  short _validade = atof(result[4].c_str());
+
+
+		  Fruta * fruta = new Fruta(_codigo, _descricao, _preco, _data, _validade);
+
+		  produtoIgualEncontrado = false;
+		  for (auto i = lista.begin(); i != lista.end(); ++i)
+			{
+				if(*fruta == **i){
+					produtoIgualEncontrado = true;
+				}
+
+			}
+
+		  if(produtoIgualEncontrado == false)
+		   		lista.push_back(make_shared<Fruta>(*fruta));
+
+
+
+		}
+		arqFrutas.close();
+	}else{
+		cout << "arquivo de frutas não encontrado. Verificar o caminho do arquivo." << endl;
+	}
+
+	ifstream arqRoupas("/home/claudio/Documentos/UFRN/LPI/laboratorio 3/questao1/roupas.dat");
+
+	if (arqRoupas.is_open())
+		{
+			while (! arqRoupas.eof() )
+			{
+			  getline (arqRoupas,line);
+			  std::vector<std::string> result = split_string(line, ",");
+			  std::string _codigo = result[0];
+			  std::string _descricao = result[1];
+			  double _preco = atof(result[2].c_str());
+			  std::string _data = result[3];
+			  short _validade = atof(result[4].c_str());
+
+
+			  Fruta * fruta = new Fruta(_codigo, _descricao, _preco, _data, _validade);
+
+			  produtoIgualEncontrado = false;
+			  for (auto i = lista.begin(); i != lista.end(); ++i)
+				{
+					if(*fruta == **i){
+						produtoIgualEncontrado = true;
+					}
+
+				}
+
+			  if(produtoIgualEncontrado == false)
+			   		lista.push_back(make_shared<Fruta>(*fruta));
+
+
+
+			}
+			arqFrutas.close();
+		}else{
+			cout << "arquivo de frutas não encontrado. Verificar o caminho do arquivo." << endl;
+		}
+
+	for (auto i = lista.begin(); i != lista.end(); ++i)
+	{
+		std::cout << (**i) << std::endl;	
+	}
+
+
+
+/*
+	Produto * fruta = new Fruta("001002003-46","Maca verde",8.70,"01/10/2017",18);
+	cout << *fruta << endl;
+	Produto * bebida = new Bebida("001002003-02","Coca cola",9.70,18.70);
+	cout << *bebida << endl;
+	Produto * roupa = new Roupa("001002003-02","Camisa",8.70, "Lacoste", "M", 12);
+	//cout << *roupa << endl;
+
+	if(*roupa == *bebida){
+		cout << "somos iguais" << endl;
+		delete roupa;
+	}
+	else
+		cout << "somos distintos" << endl;
+
+	cout << *roupa << endl;*/
+	return 0;
+}

@@ -1,0 +1,147 @@
+#include "../include/contaCorrente.h"
+
+ContaCorrente::ContaCorrente() {
+	this->agencia = "";
+	this->numero = "";
+	this->saldo = 0;
+	this->status = 0;
+	this->limite = 2000;
+
+}
+
+const std::string& ContaCorrente::getAgencia() const {
+	return agencia;
+}
+
+void ContaCorrente::setAgencia(const std::string& agencia) {
+	this->agencia = agencia;
+}
+
+double ContaCorrente::getLimite() const {
+	return limite;
+}
+
+void ContaCorrente::setLimite(double limite) {
+	this->limite = limite;
+}
+
+const std::vector<Movimentacao>& ContaCorrente::getMovimentacao() const {
+	return movimentacao;
+}
+
+void ContaCorrente::setMovimentacao(
+		const std::vector<Movimentacao>& movimentacao) {
+	this->movimentacao = movimentacao;
+}
+
+const std::string& ContaCorrente::getNumero() const {
+	return numero;
+}
+
+void ContaCorrente::setNumero(const std::string& numero) {
+	this->numero = numero;
+}
+
+double ContaCorrente::getSaldo() const {
+	return saldo;
+}
+
+void ContaCorrente::setSaldo(double saldo) {
+	this->saldo = saldo;
+}
+
+const int ContaCorrente::getStatus() const {
+	return status;
+}
+
+void ContaCorrente::setStatus(const int status) {
+	this->status = status;
+}
+
+istream& operator>>(istream &a, ContaCorrente &c){
+	cin.ignore();
+	cout << "Digite a agência da conta: " << endl;
+	a >> c.agencia;
+	cout << "Digite o numero da conta: " << endl;
+	a >> c.numero;
+	return a;
+}
+
+ostream& operator<<(ostream &e, ContaCorrente const c){
+	e << "Agencia: "<< c.agencia
+	  << "| Numero: " << c.numero
+	  << "| saldo: " <<  c.saldo
+	  << "| status: " <<  c.status
+	  << "| limite: " <<  c.limite
+	  << endl;
+	return e;
+}
+
+bool ContaCorrente::operator ==(ContaCorrente& conta_comparada){
+	if((this->agencia.compare(conta_comparada.getAgencia()) == 0) &&
+			(this->numero.compare(conta_comparada.getNumero()) == 0))
+		return true;
+	else
+		return false;
+}
+
+bool ContaCorrente::saque(double valor){
+	if(valor <= this->saldo){
+		cout << "Quantia sacada " << valor << endl;
+		this->saldo = this->saldo - valor;
+		cout << "Quantia restante" << this->saldo << endl;
+		Movimentacao movimentacao_debito("Saque", valor, "debito");
+		this->movimentacao.push_back(movimentacao_debito);
+		return true;
+	//fazer a verificação do cheque especial
+	}else{
+		return false;
+	}
+
+}
+
+void ContaCorrente::deposito(double valor){
+	cout << "Quantia depositada " << valor << endl;
+	this->saldo = this->saldo + valor;
+	Movimentacao movimentacao_credito("Deposito", valor, "credito");
+	this->movimentacao.push_back(movimentacao_credito);
+	cout << "Depósito realizado com sucesso" << endl;
+}
+
+double ContaCorrente::consultar_saldo(){
+	return this->saldo;
+}
+
+void ContaCorrente::consultar_extrato(){
+	int quantidade_movimentacoes = this->movimentacao.size();
+	if(quantidade_movimentacoes > 0){
+		for (int i = 0;i != quantidade_movimentacoes; ++i)
+		{
+			cout << this->movimentacao[i] << endl;
+		}
+	}else{
+		cout << "Não existem movimentações para esta conta" << endl;
+	}
+
+}
+
+void ContaCorrente::tranferencia(ContaCorrente& conta_tranferir, double valor){
+	cout << "Quantia tranferida da conta " << this->numero << " para a conta " << conta_tranferir.getNumero() << endl;
+	cout << "Valor transferido: " <<  valor << endl;
+	if(valor <= this->saldo){
+		this->saldo = this->saldo - valor;
+		Movimentacao movimentacao_debito("Transferência", valor, "debito");
+		double saldo_conta_tranferir = conta_tranferir.getSaldo() + valor;
+		conta_tranferir.setSaldo(saldo_conta_tranferir);
+		cout << "Quantia restante" << this->saldo << endl;
+
+		this->movimentacao.push_back(movimentacao_debito);
+	//fazer a verificação do cheque especial
+	}else{
+		return false;
+	}
+
+}
+
+ContaCorrente::~ContaCorrente() {
+}

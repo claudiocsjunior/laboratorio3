@@ -1,0 +1,35 @@
+/**
+* @file   agencia.h
+* @brief  Classe responsável por gerênciar todas  as contas
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _AGENCIA_H_ /**< Verifica se a variável _AGENCIA_H_ foi definida*/
+#define _AGENCIA_H_ /**< Define a variável _AGENCIA_H_*/
+
+#include <iostream> /**<inclui a lib iostream*/
+#include "contaCorrente.h" /**<inclui a classe contaCorrente.h*/
+#include <vector> /**<inclui a lib vector*/
+
+class Agencia
+{
+private:
+	int quantidade_contas;
+	std::vector<ContaCorrente> conta_corrente;
+public:
+	Agencia();
+	~Agencia();
+	void adicionar_conta();
+	void excluir_conta();
+	int procurar_posicao_conta_corrente();
+	void funcionalidades();
+	void saque();
+	void deposito();
+	void saldo();
+	void extrato();
+	void transferencia();
+};
+
+#endif

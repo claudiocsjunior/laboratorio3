@@ -1,0 +1,26 @@
+#include "../include/movimentacao.h"
+
+Movimentacao::Movimentacao() {
+}
+
+Movimentacao::Movimentacao(std::string descricao, double valor, std::string tipo) {
+}
+
+Movimentacao::~Movimentacao() {
+}
+
+const std::string& Movimentacao::getDescricao() const {
+	return descricao;
+}
+
+void Movimentacao::setDescricao(const std::string& descricao) {
+	this->descricao = descricao;
+}
+
+double Movimentacao::getValor() const {
+	return valor;
+}
+
+void Movimentacao::setValor(double valor) {
+	this->valor = valor;
+}

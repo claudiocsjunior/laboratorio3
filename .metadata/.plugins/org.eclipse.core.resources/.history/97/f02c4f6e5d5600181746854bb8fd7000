@@ -1,0 +1,25 @@
+#ifndef _CONTACORRENTE_H_
+#define _CONTACORRENTE_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include <vector>
+
+class ContaCorrente
+{
+private:
+	std::string agencia;
+	std::string numero;
+	double saldo;
+	std::string status;
+	int limite;
+	std::vector<Movimentacao> movimentacao;
+public:
+	ContaCorrente();
+	ContaCorrente(std::string _codigo, std::string _descricao, double _preco);
+	~ContaCorrente();
+
+
+};
+
+#endif

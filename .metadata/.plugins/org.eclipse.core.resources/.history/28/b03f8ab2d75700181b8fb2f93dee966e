@@ -1,0 +1,33 @@
+/**
+* @file   bebida.h
+* @brief  Classe responsável por gerenciar os produtos dos tipos bebidas
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _BEBIDA_H_  /**< Verifica se a variável _BEBIDA_H_ foi definida*/
+#define _BEBIDA_H_	 /**< Define a variável _BEBIDA_H_*/
+
+#include "produto.h" /**< Inclusão da classe produto.h*/
+
+class Bebida : public Produto
+{
+public:
+	Bebida();
+	Bebida(std::string _codigo, std::string _descricao, double _preco, double _teorAlcolico);
+	~Bebida();
+private: /**< Local para declaração de atributos privados*/
+	double m_teorAlcolico;
+public:
+	// getters
+	double getTeorAlcolico();
+	// setters
+	void setTeorAlcolico(double _teorAlcolico);
+
+	friend std::ostream& operator<< (std::ostream &o, Bebida const &t);
+private: /**< Local para declaração de métodos privados*/
+	std::ostream& print(std::ostream &o) const;
+};
+
+#endif

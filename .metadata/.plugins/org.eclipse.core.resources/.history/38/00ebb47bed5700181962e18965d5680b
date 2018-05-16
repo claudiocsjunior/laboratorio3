@@ -1,0 +1,27 @@
+/**
+* @file   contaPoupanca.h
+* @brief  Classe responsável por gerênciar as contas poupança
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _CONTAPOUPANCA_H_ /**< Verifica se a variável _CONTAPOUPANCA_H_ foi definida*/
+#define _CONTAPOUPANCA_H_ /**< Define a variável _CONTAPOUPANCA_H_*/
+
+#include <iostream>
+#include "movimentacao.h"
+#include "conta.h"
+#include <vector>
+#include <stdlib.h>
+
+using namespace std;
+
+class ContaPoupanca : public Conta
+{
+public:
+	ContaPoupanca();
+	~ContaPoupanca();
+};
+
+#endif

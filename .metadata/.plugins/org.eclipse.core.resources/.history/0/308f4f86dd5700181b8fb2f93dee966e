@@ -1,0 +1,64 @@
+/**
+* @file   fruta.cpp
+* @brief  Responsável por gerenciar os produtos dos tipos frutas
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#include <iomanip> /**< Inclusão da lib iomanip*/
+#include "../include/roupa.h" /**< Inclusão da classe roupa*/
+#include "../include/produto.h" /**< Inclusão da classe produto*/
+
+/**
+* @brief Construtor padrão do objeto
+*/
+Roupa::Roupa() {
+}
+
+/**
+* @brief Construtor parâmetrizado do objeto
+*/
+Roupa::Roupa(std::string _codigo, std::string _descricao, double _preco,
+		std::string _marca, std::string _sexo, int _tamanho):
+		Produto(_codigo, _descricao, _preco), m_marca (_marca), m_sexo(_sexo), m_tamanho(_tamanho)	{}
+
+Roupa::~Roupa() {}
+
+std::string Roupa::getMarca() {
+	return m_marca;
+}
+
+std::string Roupa::getSexo() {
+	return m_sexo;
+}
+
+int Roupa::getTamanho() {
+	return m_tamanho;
+}
+
+void Roupa::setMarca(std::string _marca) {
+	m_marca= _marca;
+}
+
+void Roupa::setSexo(std::string _sexo) {
+	m_sexo = _sexo;
+}
+
+void Roupa::setTamanho(int _tamanho) {
+	m_tamanho = _tamanho;
+}
+
+std::ostream& operator<< (std::ostream &o, Roupa const &r){
+	return r.print(o);
+}
+
+std::ostream& Roupa::print(std::ostream& o) const {
+	o << std::setfill (' ') << std::setw (10) << m_cod_barras << " | "
+			<< std::setfill ('.') << std::setw (20) << m_descricao << " | "
+			<< std::setfill (' ') << std::setw (5) << m_preco << " | "
+			<< std::setfill (' ') << std::setw (10) << m_marca << " | "
+			<< std::setfill (' ') << std::setw (10) << m_sexo << " | "
+			<< std::setfill (' ') << std::setw (3) << m_tamanho;
+		return o;
+}

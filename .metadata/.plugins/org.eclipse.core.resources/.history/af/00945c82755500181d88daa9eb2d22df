@@ -1,0 +1,25 @@
+#ifndef _ROUPA_H_
+#define _ROUPA_H_
+
+#include "produto.h"
+
+class Roupa : public Produto
+{
+public:
+	Roupa();
+	Roupa(std::string _codigo, std::string _descricao, short _preco, std::string _marca, std::string _sexo, short _tamanho);
+	~Roupa();
+private:
+	std::string _marca;
+	std::string _sexo;
+	short _tamanho;
+public:
+	// getters
+	double getDataLote();
+	// setters
+	void setDataLote(double _teorAlcolico);
+private:
+	std::ostream& print(std::ostream &o) const;
+};
+
+#endif

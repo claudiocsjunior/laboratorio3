@@ -1,0 +1,42 @@
+/**
+* @file   produto.h
+* @brief  Classe base responsável por gerênciar os produtos
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _PRODUTO_H_  /**< Verifica se a variável _PRODUTO_H_ foi definida*/
+#define _PRODUTO_H_	 /**< Define a variável _PRODUTO_H_*/
+
+#include <iostream>
+
+class Produto
+{
+public:
+	Produto();
+	Produto(std::string _codigo, std::string _descricao, double _preco);
+	virtual ~Produto();
+protected:
+	std::string m_cod_barras;
+	std::string m_descricao;
+	double m_preco;		
+public:
+	// getters
+	std::string getCodBarras();
+	std::string getDescricao();
+	double getPreco();
+	// setters
+	void setCodBarras(std::string _codigo);
+	void setDescricao(std::string _descricao);
+	void setPreco(double _preco);
+	//
+	friend std::ostream& operator<< (std::ostream &o, Produto const &t);  
+	double operator+(Produto &produtoSomado);
+	double operator-(Produto &produtoSubtraido);
+	bool operator==(Produto &produtoComparado);
+private: /**< Local para declaração de métodos e atributos privados*/
+	virtual std::ostream& print(std::ostream&) const = 0;
+};
+ 
+#endif

@@ -1,0 +1,37 @@
+/**
+* @file   fruta.h
+* @brief  Classe responsável por gerenciar os produtos dos tipos frutas
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _FRUTA_H_  /**< Verifica se a variável _FRUTA_H_ foi definida*/
+#define _FRUTA_H_	 /**< Define a variável _FRUTA_H_*/
+
+#include "produto.h" /**< Inclusão da classe produto.h*/
+
+class Fruta : public Produto
+{
+public:
+	Fruta();
+	Fruta(std::string _codigo, std::string _descricao, double _preco,
+			std::string _data, short _validade);
+	~Fruta();
+private:
+	std::string m_data_lote;
+	short m_validade;
+public:
+	// getters
+	std::string getDataLote();
+	short getValidade();
+	// setters
+	void setDataLote(std::string _data);
+	void setValidade(short _validade);
+
+	friend std::ostream& operator<< (std::ostream &o, Fruta const &t);
+private:
+	std::ostream& print(std::ostream &o) const;
+};
+
+#endif

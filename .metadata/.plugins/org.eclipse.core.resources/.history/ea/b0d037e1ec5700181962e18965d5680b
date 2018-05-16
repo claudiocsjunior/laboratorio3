@@ -1,0 +1,31 @@
+/**
+* @file   contaCorrente.h
+* @brief  Classe responsável por gerênciar as contas correntes
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _CONTACORRENTE_H_
+#define _CONTACORRENTE_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include "../include/conta.h"
+#include <vector>
+#include <stdlib.h>
+
+using namespace std;
+
+class ContaCorrente : public Conta
+{
+private:
+	double taxa_mensal;
+public:
+	ContaCorrente();
+	~ContaCorrente();
+	double getTaxaMensal() const;
+	void setTaxaMensal(double taxaMensal);
+};
+
+#endif

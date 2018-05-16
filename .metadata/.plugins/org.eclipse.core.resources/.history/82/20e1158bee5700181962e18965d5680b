@@ -1,0 +1,11 @@
+#include <iostream>
+#include "../include/agencia.h"
+#include "../include/contaCorrente.h"
+#include "../include/movimentacao.h"
+#include "../include/conta.h"
+
+int main(){
+	Agencia agencia;
+	agencia.funcionalidades();
+	return 0;
+}

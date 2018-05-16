@@ -1,0 +1,37 @@
+#ifndef _CONTACORRENTE_H_
+#define _CONTACORRENTE_H_
+
+#include <iostream>
+#include "movimentacao.h"
+#include <vector>
+
+class ContaCorrente
+{
+private:
+	std::string agencia;
+	std::string numero;
+	double saldo;
+	std::string status;
+	int limite;
+	std::vector<Movimentacao> movimentacao;
+public:
+	ContaCorrente();
+	ContaCorrente(std::string _codigo, std::string _descricao, double _preco);
+	~ContaCorrente();
+	// getters
+	std::string getCodBarras();
+	std::string getDescricao();
+	double getPreco();
+	// setters
+	void setCodBarras(std::string _codigo);
+	void setDescricao(std::string _descricao);
+	void setPreco(double _preco);
+	//
+	friend std::ostream& operator<< (std::ostream &o, Produto const &t);
+	double operator+(Produto &produtoSomado);
+	double operator-(Produto &produtoSubtraido);
+	bool operator==(Produto &produtoComparado);
+
+};
+
+#endif

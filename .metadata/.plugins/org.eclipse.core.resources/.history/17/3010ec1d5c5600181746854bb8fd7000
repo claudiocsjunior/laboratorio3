@@ -1,0 +1,31 @@
+#ifndef _MOVIMENTACAO_H_
+#define _MOVIMENTACAO_H_
+
+#include <iostream>
+
+class Movimentacao
+{
+private:
+	virtual std::ostream& print(std::ostream&) const = 0;
+
+public:
+	Movimentacao();
+	Movimentacao(std::string _codigo, std::string _descricao, double _preco);
+	~Movimentacao();
+	// getters
+	std::string getCodBarras();
+	std::string getDescricao();
+	double getPreco();
+	// setters
+	void setCodBarras(std::string _codigo);
+	void setDescricao(std::string _descricao);
+	void setPreco(double _preco);
+	//
+	friend std::ostream& operator<< (std::ostream &o, Produto const &t);
+	double operator+(Produto &produtoSomado);
+	double operator-(Produto &produtoSubtraido);
+	bool operator==(Produto &produtoComparado);
+
+};
+
+#endif

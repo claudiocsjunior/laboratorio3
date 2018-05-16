@@ -1,0 +1,33 @@
+#include "../include/bebida.h"
+#include "../include/produto.h"
+
+
+Bebida::Bebida(){
+}
+
+Bebida::Bebida(std::string _codigo, std::string _descricao, short _preco, double _teorAlcolico):
+		Produto(_codigo, _descricao, _preco), m_teorAlcolico (_teorAlcolico){}
+
+Bebida::~Bebida(){
+}
+
+double Bebida::getTeorAlcolico(){
+	return m_teorAlcolico;
+}
+
+void Bebida::setTeorAlcolico(double _teorAlcolico) {
+	m_teorAlcolico = _teorAlcolico;
+}
+
+std::ostream& Bebida::print(std::ostream& o) const {
+	o << std::setfill (' ') << std::setw (10) << m_cod_barras << " | "
+			<< std::setfill ('.') << std::setw (20) << m_descricao << " | "
+			<< std::setfill (' ') << std::setw (5) << m_preco << " | "
+			<< std::setfill (' ') << std::setw (5) << m_teorAlcolico;
+		return o;
+}
+
+std::ostream& operator<< (std::ostream &o, Bebida const &b){
+	return b.print(o);
+}
+

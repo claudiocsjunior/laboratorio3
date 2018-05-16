@@ -1,0 +1,3 @@
+﻿Respostas:
+1) Mesmo não tendo sobrecarregado o operador de inserção das classes derivadas foi possível imprimir de forma personalizada cada um dos tipos, pois dentro do método é chamado o método print do produto que é virtual, ou seja, por ser virtual ele pode ser acessado pelas classes derivadas, mas mesmo assim ele é sobrecarregado pelo método print da classe derivada. 
+2) O destrutor da classe produto foi declarado como virtual para que ele pudesse ser acessado pelas classes derivadas, mesmo sendo sobrecarregado.

@@ -1,0 +1,34 @@
+#include "../include/roupa.h"
+#include "../include/produto.h"
+
+Roupa::Roupa() {
+}
+
+Roupa::Roupa(std::string _codigo, std::string _descricao, short _preco
+		std::string _marca, std::string _sexo, short _tamanho:
+		Produto(_co)) {
+}
+
+Roupa::~Roupa() {
+}
+
+std::string Roupa::getMarca() {
+}
+
+std::string Roupa::getSexo() {
+}
+
+std::string Roupa::getTamanho() {
+}
+
+void Roupa::setMarca(std::string _marca) {
+}
+
+void Roupa::setSexo() {
+}
+
+void Roupa::setTamanho() {
+}
+
+std::ostream& Roupa::print(std::ostream& o) const {
+}

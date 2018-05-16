@@ -1,0 +1,8 @@
+#include <iostream>
+#include "../include/agencia.h"
+
+int main(){
+	Agencia agencia;
+
+	return 0;
+}

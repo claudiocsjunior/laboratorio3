@@ -1,0 +1,25 @@
+/**
+* @file   contaCorrente.cpp
+* @brief  Responsável por gerênciar as contas correntes
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#include "../include/contaCorrente.h"
+
+ContaCorrente::ContaCorrente(){
+
+}
+
+ContaCorrente::~ContaCorrente(){
+
+}
+
+double ContaCorrente::getTaxaMensal() const {
+	return this->taxa_mensal;
+}
+
+void ContaCorrente::setTaxaMensal(double taxaMensal) {
+	this->taxa_mensal = taxaMensal;
+}

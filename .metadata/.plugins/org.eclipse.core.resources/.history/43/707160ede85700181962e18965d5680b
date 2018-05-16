@@ -1,0 +1,130 @@
+/**
+* @file   contaCorrente.h
+* @brief  Classe responsável por gerênciar as contas correntes
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _CONTACORRENTE_H_ /**< Verifica se a variável _CONTACORRENTE_H_ foi definida*/
+#define _CONTACORRENTE_H_ /**< Define a variável _CONTACORRENTE_H_*/
+
+#include <iostream> /**<inclui a lib iostream*/
+#include "movimentacao.h" /**<inclui a classe movimentacao.h*/
+#include <vector> /**<inclui a lib vector*/
+#include <stdlib.h> /**<inclui a lib stdlib.h*/
+
+using namespace std; /**<Usa namespace std*/
+
+class ContaCorrente
+{
+private:
+	std::string agencia;/**< Variável para armazenar a agencia*/
+	std::string numero;/**< Variável para armazenar o numero*/
+	double saldo;/**< Variável para armazenar o saldo*/
+	int status; /**< Variável para armazenar o status, 0 - normal; 1 - especial; */
+	double limite; /**< Variável para armazenar o limite, 2000 - default */
+	std::vector<Movimentacao> movimentacao;/**< Vetor para armazenar as movimentações*/
+public:
+	/**
+	* @brief Construtor padrão da classe
+	*/
+	ContaCorrente();
+
+	/**
+	* @brief Destrutor da classe
+	*/
+	~ContaCorrente();
+
+	/**
+	* @brief Método para exclusão de conta corrente
+	* @return
+	*/
+	const std::string& getAgencia() const;
+	void setAgencia(const std::string& agencia);
+
+	/**
+	* @brief Método de acesso para o limite da conta
+	* @return
+	*/
+	double getLimite() const;
+	void setLimite(double limite);
+
+	/**
+	* @brief Método de acesso para as movimentações
+	* @return
+	*/
+	const std::vector<Movimentacao>& getMovimentacao() const;
+	void setMovimentacao(const std::vector<Movimentacao>& movimentacao);
+
+	/**
+	* @brief Método de acesso ao numero da conta
+	* @return
+	*/
+	const std::string& getNumero() const;
+	void setNumero(const std::string& numero);
+
+	/**
+	* @brief Método de acesso ao saldo
+	* @return
+	*/
+	double getSaldo() const;
+	void setSaldo(double saldo);
+
+	/**
+	* @brief Método de acesso para o status da conta
+	* @return
+	*/
+	const int getStatus() const;
+	void setStatus(const int status);
+
+	/**
+	* @brief Método
+	* @return
+	*/
+	bool saque(double valor);
+	void deposito(double valor);
+	void tranferencia(ContaCorrente &conta_tranferir, double valor);
+	/**
+	* @brief Método para consulta do saque
+	* @return
+	*/
+	double consultar_saldo();
+
+	/**
+	* @brief Método para consulta do extrato
+	* @return
+	*/
+	void consultar_extrato();
+
+	/**
+	* @brief Método para adicionar movimentação na tranferência
+	* @return
+	*/
+	void add_movimentacao(std::string descricao, double valor, std::string tipo);
+
+	/**
+	* @brief Efetua a sobrecarga do operador >>
+	* @param[in] variável para o >>
+	* @param[in] Constante para guardar o objeto
+	* @return valor do cin
+	*/
+	friend istream& operator>>(istream &a, ContaCorrente &c);
+
+	/**
+	* @brief Efetua a sobrecarga do operador <<
+	* @param[in] variável para o <<
+	* @param[in] Constante para guardar o objeto
+	* @return valor do cout
+	*/
+	friend ostream& operator<<(ostream &e, ContaCorrente const c);
+
+	/**
+	* @brief Efetua a sobrecarga do operador ==
+	* @param[in] Constante para guardar o objeto a ser comparado
+	* @return booleano
+	*/
+	bool operator==(ContaCorrente &conta_comparada);
+};
+
+#endif

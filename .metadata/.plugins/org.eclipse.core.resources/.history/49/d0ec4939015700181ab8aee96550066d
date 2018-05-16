@@ -1,0 +1,7 @@
+#include "../include/contaCorrente.h"
+
+double ContaCorrente::getTaxaMensal() const {
+}
+
+void ContaCorrente::setTaxaMensal(double taxaMensal) {
+}

@@ -1,0 +1,22 @@
+#ifndef _MOVIMENTACAO_H_
+#define _MOVIMENTACAO_H_
+
+#include <iostream>
+#include "contaCorrente.h"
+#include <vector>
+
+class Agencia
+{
+private:
+	int quantidade_contas;
+	std::vector<ContaCorrente> conta_corrente;
+public:
+	Agencia();
+	~Agencia();
+	bool adicionar_conta(ContaCorrente &conta_corrente);
+	bool excluir_conta(ContaCorrente &conta_corrente);
+
+	void funcionalidades();
+};
+
+#endif

@@ -1,0 +1,192 @@
+#include <iostream>
+#include "../include/agencia.h"
+
+using namespace std;
+Agencia::Agencia() {
+}
+
+Agencia::~Agencia() {
+}
+
+void Agencia::adicionar_conta() {
+	ContaCorrente conta_corrente;
+	cin >> conta_corrente;
+	cout << "(0) - Corrente especial, (1) - Conta normal " << endl;
+	int status;
+	cin >> status;
+	conta_corrente.setStatus(status);
+	int tamanho = this->conta_corrente.size();
+	bool existeIgual = false;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta_corrente[i] == conta_corrente)
+			existeIgual = true;
+
+	}
+
+	if(existeIgual == false){
+		this->conta_corrente.push_back(conta_corrente);
+		cout << "Conta adicionada com sucesso" << endl;
+		tamanho = this->conta_corrente.size();
+		cout << "---Contas Adicionadas---" << endl;
+		for (int j = 0;j != tamanho; ++j)
+		{
+			cout << this->conta_corrente[j] << endl;
+		}
+	}else{
+		cout << "Erro. Conta existente" << endl;
+	}
+
+
+}
+
+void Agencia::excluir_conta() {
+	ContaCorrente conta_corrente;
+	cin >> conta_corrente;
+	int tamanho = this->conta_corrente.size();
+	bool existeIgual = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta_corrente[i] == conta_corrente){
+			existeIgual = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existeIgual == true){
+		this->conta_corrente.erase(this->conta_corrente.begin()+posicao);
+		cout << "Conta Excluida com sucesso" << endl;
+		tamanho = this->conta_corrente.size();
+		cout << "---Contas Restantes---" << endl;
+		for (int j = 0;j != tamanho; ++j)
+		{
+			cout << this->conta_corrente[j] << endl;
+		}
+	}else{
+		cout << "Conta não existente no banco de dados." << endl;
+	}
+}
+
+void Agencia::funcionalidades() {
+	int escolha;
+	do{
+
+		cout << "---AGÊNCIA FUNCIONALIDADES---" << endl;
+		cout << "(1) +    Adicionar Conta" << endl;
+		cout << "(2) -    Excluir conta" << endl;
+		cout << "(3) ->   Efetuar Saque" << endl;
+		cout << "(4) <-   Efetuar Deposito" << endl;
+		cout << "(5) $    Consultar Saldo" << endl;
+		cout << "(6) #    Extrato" << endl;
+		cout << "(7) $--> Transferência" << endl;
+		cout << "(0) SAIR" <<endl;
+		cin >> escolha;
+		switch (escolha)
+		{
+			case 0:
+				break;
+			case 1:
+				adicionar_conta();
+				break;
+			case 2:
+				excluir_conta();
+				break;
+			case 3:
+				saque();
+				break;
+			case 4:
+				deposito();
+				break;
+			case 5:
+				saldo();
+				break;
+			default:
+				cout <<"Opção invalida! "<< endl;
+				escolha = 0;
+		}
+	}while(escolha > 0);
+}
+
+void Agencia::saque(){
+	cout << "Digite os dados da conta para saque." << endl;
+	ContaCorrente conta_corrente;
+	cin >> conta_corrente;
+	int tamanho = this->conta_corrente.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta_corrente[i] == conta_corrente){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existe_conta == true){
+		cout << "Digite o valor para saque" << endl;
+		double valor;
+		cin >> valor;
+		if(this->conta_corrente[posicao].saque(valor)){
+			cout << "saque efetuado com sucesso" << endl;
+		}else{
+			cout << "Erro no saque. Verifique se há quantia disponível na conta" << endl;
+		}
+	}else{
+		cout << "Conta não encontrada no banco de dados da aplicação" << endl;
+	}
+}
+
+void Agencia::deposito(){
+	cout << "Digite os dados da conta para depósito." << endl;
+	ContaCorrente conta_corrente;
+	cin >> conta_corrente;
+	int tamanho = this->conta_corrente.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta_corrente[i] == conta_corrente){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existe_conta == true){
+		cout << "Digite o valor para deposito" << endl;
+		double valor;
+		cin >> valor;
+		this->conta_corrente[posicao].deposito(valor);
+	}else{
+		cout << "Conta corrente não encontrada no banco de dados da aplicação" << endl;
+	}
+}
+
+void Agencia::saldo(){
+	cout << "Digite os dados da conta para consultar o saldo." << endl;
+	ContaCorrente conta_corrente;
+	cin >> conta_corrente;
+	int tamanho = this->conta_corrente.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta_corrente[i] == conta_corrente){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existe_conta == true){
+		cout << "Saldo: " << this->conta_corrente[posicao].consultar_saldo()   << endl;
+	}else{
+		cout << "Conta corrente não encontrada no banco de dados da aplicação" << endl;
+	}
+
+}
+
+

@@ -1,0 +1,39 @@
+/**
+* @file   roupa.h
+* @brief  Classe responsável por gerenciar os produtos dos tipos roupas
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+
+#ifndef _ROUPA_H_  /**< Verifica se a variável _ROUPA_H_ foi definida*/
+#define _ROUPA_H_	 /**< Define a variável _ROUPA_H_*/
+
+#include "produto.h" /**< Inclusão da classe produto.h*/
+
+class Roupa : public Produto
+{
+public:
+	Roupa();
+	Roupa(std::string _codigo, std::string _descricao, double _preco, std::string _marca, std::string _sexo, int _tamanho);
+	~Roupa();
+private: /**< Local para declaração de atributos privados*/
+	std::string m_marca;
+	std::string m_sexo;
+	int m_tamanho;
+public:
+	// getters
+	std::string getMarca();
+	std::string getSexo();
+	int getTamanho();
+	// setters
+	void setMarca(std::string _marca);
+	void setSexo(std::string _sexo);
+	void setTamanho(int _tamanho);
+
+	friend std::ostream& operator<< (std::ostream &o, Roupa const &t);
+private: /**< Local para declaração de métodos privados*/
+	std::ostream& print(std::ostream &o) const;
+};
+
+#endif

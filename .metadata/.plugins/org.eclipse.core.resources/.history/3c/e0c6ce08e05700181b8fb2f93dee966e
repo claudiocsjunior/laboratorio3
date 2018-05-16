@@ -1,0 +1,33 @@
+/**
+* @file   movimentacao.h
+* @brief  Classe responsável por gerênciar os movimentos por conta
+* @author Claudio da Cruz Silva Junior
+* @since  12/05/2018
+* @date   12/05/2018
+*/
+#ifndef _MOVIMENTACAO_H_ /**< Verifica se a variável _MOVIMENTACAO_H_ foi definida*/
+#define _MOVIMENTACAO_H_ /**< Define a variável _MOVIMENTACAO_H_*/
+
+#include <iostream> /**<inclui a lib iostream*/
+
+using namespace std;
+
+class Movimentacao
+{
+private:
+	std::string descricao;
+	double valor;
+	std::string tipo;
+public:
+	Movimentacao();
+	Movimentacao(std::string descricao, double valor, std::string tipo);
+	~Movimentacao();
+	const std::string& getDescricao() const;
+	void setDescricao(const std::string& descricao);
+	double getValor() const;
+	void setValor(double valor);
+
+	friend ostream& operator<<(ostream &e, Movimentacao const m);
+};
+
+#endif
