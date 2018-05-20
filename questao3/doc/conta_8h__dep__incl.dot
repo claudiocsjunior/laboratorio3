@@ -11,15 +11,18 @@ digraph "include/conta.h"
   Node4 [label="src/agencia.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$agencia_8cpp.html",tooltip="Responsável por gerênciar todas as contas. "];
   Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="Arquivo inicial. "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="src/contaCorrente.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contaCorrente_8cpp.html",tooltip="Responsável por gerênciar as contas correntes. "];
   Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 [label="include/contaPoupanca.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contaPoupanca_8h.html",tooltip="Classe responsável por gerênciar as contas poupança. "];
   Node7 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="src/contaPoupanca.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$contaPoupanca_8cpp.html",tooltip="Responsável por gerênciar as contas poupança. "];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="src/conta.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$conta_8cpp.html",tooltip="Responsável por gerênciar as contas. "];
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

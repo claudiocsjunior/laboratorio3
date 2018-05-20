@@ -28,6 +28,21 @@ public:
 	* @brief Destrutor da classe
 	*/
 	~ContaPoupanca();
+
+	/**
+	* @brief Método para realizar saque na poupança
+	* @param[in] variável valor
+	* @return bool
+	*/
+	bool saque(double valor);
+
+
+	/**
+	* @brief Método para realizar depósito
+	* @param[in] variável valor
+	* @return
+	*/
+	void deposito(double valor);
 };
 
 #endif

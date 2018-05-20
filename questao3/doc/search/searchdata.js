@@ -3,8 +3,8 @@ var indexSectionsWithContent =
   0: "_acdefglmnost~",
   1: "acm",
   2: "acm",
-  3: "acdefgmost~",
-  4: "almns",
+  3: "acdefglmost~",
+  4: "almnst",
   5: "o",
   6: "_"
 };

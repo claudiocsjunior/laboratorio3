@@ -22,13 +22,18 @@ protected:
 	std::string numero;/**< Variável para armazenar o numero*/
 	double saldo;/**< Variável para armazenar o saldo*/
 	int status; /**< Variável para armazenar o status, 0 - normal; 1 - especial; */
-	double limite; /**< Variável para armazenar o limite, 2000 - default */
 	std::vector<Movimentacao> movimentacao;/**< Vetor para armazenar as movimentações*/
+	int tipo_conta;/**< Variável para armazenar o tipo da conta - 0 para corrente e 1 para poupanca*/
+	double limite; /**< Variável para armazenar o limite, 2000 - default */
 public:
 	/**
 	* @brief Construtor padrão da classe
 	*/
 	Conta();
+	/**
+	* @brief Construtor parâmetrizado da classe
+	*/
+	Conta(int tipo_conta);
 
 	/**
 	* @brief Destrutor da classe
@@ -47,19 +52,6 @@ public:
 	* @return
 	*/
 	void setAgencia(const std::string& agencia);
-
-	/**
-	* @brief Método de acesso para o limite da conta
-	* @return limite
-	*/
-	double getLimite() const;
-
-	/**
-	* @brief Método de modificação para o atributo limite
-	* @param[in] variável limite
-	* @return
-	*/
-	void setLimite(double limite);
 
 	/**
 	* @brief Método de acesso para as movimentações
@@ -114,20 +106,6 @@ public:
 	void setStatus(const int status);
 
 	/**
-	* @brief Método para realizar saque
-	* @param[in] variável valor
-	* @return bool
-	*/
-	bool saque(double valor);
-
-	/**
-	* @brief Método para realizar depósito
-	* @param[in] variável valor
-	* @return
-	*/
-	void deposito(double valor);
-
-	/**
 	* @brief Método para realizar transferências
 	* @param[in] conta a tranferir
 	* @param[in] variável valor
@@ -136,12 +114,10 @@ public:
 	void tranferencia(Conta &conta_tranferir, double valor);
 
 	/**
-	* @brief Método para consulta do saque
-	* @return
-	*/
+		* @brief Método para consulta do saldo
+		* @return
+		*/
 	double consultar_saldo();
-
-
 	/**
 	* @brief Método para consulta do extrato
 	* @return
@@ -176,6 +152,12 @@ public:
 	* @return booleano
 	*/
 	bool operator==(Conta &conta_comparada);
+
+	/**
+	* @brief Método de acesso ao tipo da conta
+	* @return tipo da conta
+	*/
+	int getTipoConta() const;
 };
 
 #endif

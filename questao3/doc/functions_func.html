@@ -83,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
@@ -128,6 +129,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <li>consultar_extrato()
 : <a class="el" href="classConta.html#a98b5d790207f083d2f96dd9fc6f86f68">Conta</a>
 </li>
+<li>consultar_limite()
+: <a class="el" href="classContaCorrente.html#a8a9b452b74a326ebeedd3db7aedb59ee">ContaCorrente</a>
+</li>
 <li>consultar_saldo()
 : <a class="el" href="classConta.html#a23634f5eab419a353ff646fa5fba4d45">Conta</a>
 </li>
@@ -145,8 +149,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
 <li>deposito()
-: <a class="el" href="classAgencia.html#a76835e3891b8c2453fae40066b087feb">Agencia</a>
-, <a class="el" href="classConta.html#abcc989712208ca3e17bf0b5290a11e94">Conta</a>
+: <a class="el" href="classContaCorrente.html#a63570c32b7bd43d63d6a51ae7fbb23b8">ContaCorrente</a>
+, <a class="el" href="classContaPoupanca.html#a7da26aac8cb8971c73d6a9ab35048173">ContaPoupanca</a>
+</li>
+<li>deposito_conta_corrente()
+: <a class="el" href="classAgencia.html#a10606e40caa78204bcd1ff96b7a5e3f6">Agencia</a>
+</li>
+<li>deposito_conta_poupanca()
+: <a class="el" href="classAgencia.html#acbc52079331504e4aec3bda06b4132be">Agencia</a>
 </li>
 </ul>
 
@@ -175,9 +185,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <li>getDescricao()
 : <a class="el" href="classMovimentacao.html#a022b0cf536db063f38ec38a8dc528e2c">Movimentacao</a>
 </li>
-<li>getLimite()
-: <a class="el" href="classConta.html#a91ce13e3444c9930aadf8e7e19d20369">Conta</a>
-</li>
 <li>getMovimentacao()
 : <a class="el" href="classConta.html#a25f2dae3be7c4d169bd4d56bba626bfe">Conta</a>
 </li>
@@ -190,11 +197,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <li>getStatus()
 : <a class="el" href="classConta.html#a1c0a5b442952993ec86e58eda9561e17">Conta</a>
 </li>
-<li>getTaxaMensal()
-: <a class="el" href="classContaCorrente.html#a6bd51ec4fcb5ab446db79fe823569821">ContaCorrente</a>
+<li>getTipoConta()
+: <a class="el" href="classConta.html#a6b50aad4a647e0dd9d767d659a8e0a3a">Conta</a>
 </li>
 <li>getValor()
 : <a class="el" href="classMovimentacao.html#aaca53e12fe36402cde09a8580e1f8419">Movimentacao</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>limite_conta_corrente()
+: <a class="el" href="classAgencia.html#af8669c502fc7c465131acbea7aa7495b">Agencia</a>
 </li>
 </ul>
 
@@ -218,17 +232,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 : <a class="el" href="classAgencia.html#aec7bcceb13c8ce3311b03b0529fc1459">Agencia</a>
 </li>
 <li>saque()
-: <a class="el" href="classAgencia.html#aaed4c52172861b080f42d402b182dfd8">Agencia</a>
-, <a class="el" href="classConta.html#a85df78e6e0b29e100e297c6e8375a8ff">Conta</a>
+: <a class="el" href="classContaCorrente.html#ab70b4d418037002e2ed51b8ccb54fdfa">ContaCorrente</a>
+, <a class="el" href="classContaPoupanca.html#a5ec2e11df1e9ef1db0c49fc2f458fd76">ContaPoupanca</a>
+</li>
+<li>saque_conta_corrente()
+: <a class="el" href="classAgencia.html#ad1fef3648c9741b67bcc80745d9d9a7a">Agencia</a>
+</li>
+<li>saque_conta_poupanca()
+: <a class="el" href="classAgencia.html#a0ec5cc780a7eaa80ce960dbb387d3b41">Agencia</a>
 </li>
 <li>setAgencia()
 : <a class="el" href="classConta.html#a4330fcf0b5057aa224b0068633b46240">Conta</a>
 </li>
 <li>setDescricao()
 : <a class="el" href="classMovimentacao.html#a82a0f14394b48b3a4d841a90f3a5fd2b">Movimentacao</a>
-</li>
-<li>setLimite()
-: <a class="el" href="classConta.html#ab39fee3ec9a45fc5580448f38e29bb76">Conta</a>
 </li>
 <li>setMovimentacao()
 : <a class="el" href="classConta.html#a4353df9a5625d21793ec878ef0ce143f">Conta</a>
@@ -241,9 +258,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 </li>
 <li>setStatus()
 : <a class="el" href="classConta.html#a2723a70704a40a60630c029e0c2937ad">Conta</a>
-</li>
-<li>setTaxaMensal()
-: <a class="el" href="classContaCorrente.html#a59c97064dad4e3b83d3ecbcc53112513">ContaCorrente</a>
 </li>
 <li>setValor()
 : <a class="el" href="classMovimentacao.html#a90e327281da505f6913b7df9fb967273">Movimentacao</a>

@@ -7,6 +7,9 @@
 */
 #include <iostream> /**<inclui a lib iostream*/
 #include "../include/agencia.h" /**<inclui a classe agencia.h*/
+#include "../include/conta.h"
+#include "../include/contaCorrente.h"
+#include "../include/contaPoupanca.h"
 
 using namespace std;
 
@@ -137,15 +140,24 @@ void Agencia::funcionalidades() {
 	do{
 
 		cout << "---AGÊNCIA FUNCIONALIDADES---" << endl;
-		cout << "(1) +    Adicionar Conta Corrente" << endl;
-		cout << "(2) +    Adicionar Conta Poupança" << endl;
-		cout << "(3) -    Excluir conta" << endl;
-		cout << "(4) ->   Efetuar Saque" << endl;
-		cout << "(5) <-   Efetuar Deposito" << endl;
-		cout << "(6) $    Consultar Saldo" << endl;
-		cout << "(7) #    Extrato" << endl;
-		cout << "(8) $--> Transferência" << endl;
-		cout << "(0) SAIR" <<endl;
+
+		cout << " -- CONTA CORRENTE -- " << endl;
+		cout << "	(1) +    Adicionar Conta Corrente" << endl;
+		cout << "	(2) ->   Efetuar Saque Conta Corrente" << endl;
+		cout << "	(3) <-   Efetuar Deposito Conta Corrente" << endl;
+		cout << "	(4) <-   Consultar limite" << endl;
+
+		cout << " -- CONTA POUPANÇA -- " << endl;
+		cout << "	(5) +    Adicionar Conta Poupança" << endl;
+		cout << "	(6) ->   Efetuar Saque Conta Poupança" << endl;
+		cout << "	(7) <-   Efetuar Deposito Conta Poupança" << endl;
+
+		cout << " -- GERAIS -- " << endl;
+		cout << "	(8) -    Excluir conta" << endl;
+		cout << "	(9) $    Consultar Saldo" << endl;
+		cout << "	(10) #    Extrato" << endl;
+		cout << "	(11) $-> Transferência" << endl;
+		cout << "	(0) SAIR" <<endl;
 		cin >> escolha;
 		switch (escolha)
 		{
@@ -155,24 +167,33 @@ void Agencia::funcionalidades() {
 				adicionar_conta_corrente();
 				break;
 			case 2:
-				adicionar_conta_poupanca();
+				saque_conta_corrente();
 				break;
 			case 3:
-				excluir_conta();
+				deposito_conta_corrente();
 				break;
 			case 4:
-				saque();
+				limite_conta_corrente();
 				break;
 			case 5:
-				deposito();
+				adicionar_conta_poupanca();
 				break;
 			case 6:
-				saldo();
+				saque_conta_poupanca();
 				break;
 			case 7:
-				extrato();
+				deposito_conta_poupanca();
 				break;
 			case 8:
+				excluir_conta();
+				break;
+			case 9:
+				saldo();
+				break;
+			case 10:
+				extrato();
+				break;
+			case 11:
 				transferencia();
 				break;
 			default:
@@ -183,11 +204,11 @@ void Agencia::funcionalidades() {
 }
 
 /**
-* @brief Método para saque em conta
+* @brief Método para saque em conta corrente
 * @return
 */
-void Agencia::saque(){
-	cout << "Digite os dados da conta para saque." << endl;
+void Agencia::saque_conta_corrente(){
+	cout << "Digite os dados da conta corrente para saque." << endl;
 	Conta conta;
 	cin >> conta;
 	int tamanho = this->conta.size();
@@ -203,14 +224,61 @@ void Agencia::saque(){
 	}
 
 	if(existe_conta == true){
-		cout << "Digite o valor para saque" << endl;
-		double valor;
-		cin >> valor;
-		if(this->conta[posicao].saque(valor)){
-			cout << "saque efetuado com sucesso" << endl;
+		if(this->conta[posicao].getTipoConta() == 0){
+			cout << "Digite o valor para saque" << endl;
+			double valor;
+			cin >> valor;
+			ContaCorrente* conta_corrente = (ContaCorrente*)(&(this->conta[posicao]));
+			if(conta_corrente->saque(valor)){
+				cout << "saque efetuado com sucesso" << endl;
+			}else{
+				cout << "Erro no saque. Verifique se há quantia disponível na conta" << endl;
+			}
+
 		}else{
-			cout << "Erro no saque. Verifique se há quantia disponível na conta" << endl;
+			cout << "Impossível realizar operação. A conta encontrada não é Corrente" << endl;
 		}
+
+	}else{
+		cout << "Conta não encontrada no banco de dados da aplicação" << endl;
+	}
+}
+
+/**
+* @brief Método para saque em conta poupança
+* @return
+*/
+void Agencia::saque_conta_poupanca(){
+	cout << "Digite os dados da conta poupança para saque." << endl;
+	Conta conta;
+	cin >> conta;
+	int tamanho = this->conta.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta[i] == conta){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existe_conta == true){
+		if(this->conta[posicao].getTipoConta() == 1){
+			cout << "Digite o valor para saque" << endl;
+			double valor;
+			cin >> valor;
+			ContaPoupanca* conta_poupanca = (ContaPoupanca*)(&(this->conta[posicao]));
+			if(conta_poupanca->saque(valor)){
+				cout << "saque efetuado com sucesso" << endl;
+			}else{
+				cout << "Erro no saque. Verifique se há quantia disponível na conta" << endl;
+			}
+		}else{
+			cout << "Impossível realizar operação. A conta encontrada não é poupança" << endl;
+		}
+
 	}else{
 		cout << "Conta não encontrada no banco de dados da aplicação" << endl;
 	}
@@ -218,11 +286,11 @@ void Agencia::saque(){
 
 
 /**
-* @brief Método para depósito em conta
+* @brief Método para depósito em conta corrente
 * @return
 */
-void Agencia::deposito(){
-	cout << "Digite os dados da conta para depósito." << endl;
+void Agencia::deposito_conta_corrente(){
+	cout << "Digite os dados da conta corrente para depósito." << endl;
 	Conta conta;
 	cin >> conta;
 	int tamanho = this->conta.size();
@@ -238,10 +306,53 @@ void Agencia::deposito(){
 	}
 
 	if(existe_conta == true){
-		cout << "Digite o valor para deposito" << endl;
-		double valor;
-		cin >> valor;
-		this->conta[posicao].deposito(valor);
+		if(this->conta[posicao].getTipoConta() == 0){
+			cout << "Digite o valor para deposito" << endl;
+			double valor;
+			cin >> valor;
+			ContaCorrente* conta_corrente = (ContaCorrente*)(&(this->conta[posicao]));
+			conta_corrente->deposito(valor);
+		}else{
+			cout << "Impossível realizar operação. A conta encontrada não é corrente" << endl;
+		}
+
+	}else{
+		cout << "Conta corrente não encontrada no banco de dados da aplicação" << endl;
+	}
+}
+
+
+/**
+* @brief Método para depósito em conta poupança
+* @return
+*/
+void Agencia::deposito_conta_poupanca(){
+	cout << "Digite os dados da conta poupança para depósito." << endl;
+	Conta conta;
+	cin >> conta;
+	int tamanho = this->conta.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta[i] == conta){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
+
+	if(existe_conta == true){
+		if(this->conta[posicao].getTipoConta() == 1){
+			cout << "Digite o valor para deposito" << endl;
+			double valor;
+			cin >> valor;
+			ContaPoupanca* conta_poupanca = (ContaPoupanca*)(&(this->conta[posicao]));
+			conta_poupanca->deposito(valor);
+		}else{
+			cout << "Impossível realizar operação. A conta encontrada não é corrente" << endl;
+		}
+
 	}else{
 		cout << "Conta corrente não encontrada no banco de dados da aplicação" << endl;
 	}
@@ -346,4 +457,36 @@ void Agencia::transferencia(){
 
 }
 
+/**
+* @brief Método para consultar limite de conta corrente
+* @return tipo da conta
+*/
+void Agencia::limite_conta_corrente() {
+	cout << "Digite os dados da conta corrente para saque." << endl;
+	Conta conta;
+	cin >> conta;
+	int tamanho = this->conta.size();
+	bool existe_conta = false;
+	int posicao = 0;
+	for (int i = 0;i != tamanho; ++i)
+	{
+		if(this->conta[i] == conta){
+			existe_conta = true;
+			posicao = i;
+			break;
+		}
+	}
 
+	if(existe_conta == true){
+		if(this->conta[posicao].getTipoConta() == 0){
+			ContaCorrente* conta_corrente = (ContaCorrente*)(&(this->conta[posicao]));
+			conta_corrente->consultar_limite();
+
+		}else{
+			cout << "Impossível realizar operação. A conta encontrada não é Corrente" << endl;
+		}
+
+	}else{
+		cout << "Conta não encontrada no banco de dados da aplicação" << endl;
+	}
+}

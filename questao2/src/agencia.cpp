@@ -302,6 +302,8 @@ void Agencia::transferencia(){
 		int valor;
 		cin >> valor;
 		this->conta_corrente[posicao1].tranferencia( this->conta_corrente[posicao2],valor);
+	}else{
+		cout << "Erro. Conta Inesxistente" << endl;
 	}
 
 }

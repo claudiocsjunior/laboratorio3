@@ -19,8 +19,7 @@ using namespace std; /**<Usa namespace std*/
 
 class ContaCorrente : public Conta
 {
-private:
-	double taxa_mensal; /**< Variável para armazenar a taxa mensal*/
+
 public:
 	/**
 	* @brief Construtor padrão da classe
@@ -30,16 +29,29 @@ public:
 	* @brief Destrutor da classe
 	*/
 	~ContaCorrente();
+
+
 	/**
-	* @brief Método acesso a taxa mensal
-	* @return taxa mensal
+	* @brief Método para realizar saque na poupança
+	* @param[in] variável valor
+	* @return bool
 	*/
-	double getTaxaMensal() const;
+	bool saque(double valor);
+
+
 	/**
-	* @brief Método para modificação da taxa mensal
+	* @brief Método para realizar depósito
+	* @param[in] variável valor
 	* @return
 	*/
-	void setTaxaMensal(double taxaMensal);
+	void deposito(double valor);
+
+
+	/**
+	* @brief Método para consultar limite de conta corrente
+	* @return tipo da conta
+	*/
+	void consultar_limite();
 };
 
 #endif

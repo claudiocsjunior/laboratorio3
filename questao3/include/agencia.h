@@ -57,13 +57,25 @@ public:
 	* @brief Método para saque em conta
 	* @return
 	*/
-	void saque();
+	void saque_conta_corrente();
 
 	/**
-	* @brief Método para depósito em conta
+	* @brief Método para saque em conta
 	* @return
 	*/
-	void deposito();
+	void saque_conta_poupanca();
+
+	/**
+	* @brief Método para depósito em conta corrente
+	* @return
+	*/
+	void deposito_conta_corrente();
+
+	/**
+	* @brief Método para depósito em conta poupança
+	* @return
+	*/
+	void deposito_conta_poupanca();
 
 	/**
 	* @brief Método para verificação do saldo de conta
@@ -82,6 +94,12 @@ public:
 	* @return
 	*/
 	void transferencia();
+
+	/**
+	* @brief Método para consultar limite de conta corrente
+	* @return tipo da conta
+	*/
+	void limite_conta_corrente();
 };
 
 #endif

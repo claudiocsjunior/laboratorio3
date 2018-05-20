@@ -8,6 +8,7 @@
 
 #include "../include/conta.h" /**<inclui a classe conta.h*/
 
+
 /**
 * @brief Construtor padrão da classe
 */
@@ -18,6 +19,17 @@ Conta::Conta() {
 	this->status = 0;
 	this->limite = 2000;
 
+}
+/**
+* @brief Construtor parâmetrizado da classe
+*/
+Conta::Conta(int tipo_conta) {
+	this->agencia = "";
+	this->numero = "";
+	this->saldo = 0;
+	this->status = 0;
+	this->tipo_conta = tipo_conta;
+	this->limite = 2000;
 }
 
 /**
@@ -37,22 +49,6 @@ void Conta::setAgencia(const std::string& agencia) {
 	this->agencia = agencia;
 }
 
-/**
-* @brief Método de acesso para o limite da conta
-* @return limite
-*/
-double Conta::getLimite() const {
-	return limite;
-}
-
-/**
-* @brief Método de modificação para o atributo limite
-* @param[in] variável limite
-* @return
-*/
-void Conta::setLimite(double limite) {
-	this->limite = limite;
-}
 
 /**
 * @brief Método de acesso para as movimentações
@@ -146,11 +142,21 @@ istream& operator>>(istream &a, Conta &c){
 * @return valor do cout
 */
 ostream& operator<<(ostream &e, Conta const c){
+	string tipo_conta =  "";
+	if(c.tipo_conta == 0)
+		tipo_conta = "Conta corrente";
+	else if(c.tipo_conta == 1)
+		tipo_conta = "Conta Poupança";
+	string status = "";
+	if(c.status == 0)
+		status = "Normal";
+	else if(c.status == 1)
+		status = "Especial";
 	e << "Agencia: "<< c.agencia
 	  << "| Numero: " << c.numero
 	  << "| saldo: " <<  c.saldo
-	  << "| status: " <<  c.status
-	  << "| limite: " <<  c.limite
+	  << "| status: " <<  status
+	  << "| Tipo Conta: " <<  tipo_conta
 	  << endl;
 	return e;
 }
@@ -168,57 +174,6 @@ bool Conta::operator ==(Conta& conta_comparada){
 		return false;
 }
 
-/**
-* @brief Método para realizar saque
-* @param[in] variável valor
-* @return bool
-*/
-bool Conta::saque(double valor){
-	if(valor <= this->saldo){
-		cout << "Quantia sacada " << valor << endl;
-		this->saldo = this->saldo - valor;
-		cout << "Quantia restante" << this->saldo << endl;
-		Movimentacao movimentacao_debito("Saque", valor, "debito");
-		this->movimentacao.push_back(movimentacao_debito);
-		return true;
-	}
-	else if(valor > this->saldo && valor <= this->limite){
-		cout << "Quantia sacada do saldo " << this->saldo << endl;
-		valor = valor - this->saldo;
-		this->saldo = 0;
-		cout << "Quantia sacada do limite " << valor << endl;
-		this->limite = this->limite - valor;
-		cout << "Limite disponivel: " << this->limite << endl;
-		Movimentacao movimentacao_debito("Saque/limite", valor, "debito");
-		this->movimentacao.push_back(movimentacao_debito);
-		return true;
-	}else{
-		return false;
-	}
-
-}
-
-/**
-* @brief Método para realizar depósito
-* @param[in] variável valor
-* @return
-*/
-void Conta::deposito(double valor){
-	cout << "Quantia depositada " << valor << endl;
-	if(this->limite < 2000){
-		this->limite = this->limite + valor;
-		if(this->limite > 2000){
-			int valor_restado = this->limite - 2000;
-			this->limite = 2000;
-			this->saldo = valor_restado;
-		}
-	}else{
-		this->saldo = this->saldo + valor;
-	}
-	Movimentacao movimentacao_credito("Deposito", valor, "credito");
-	this->movimentacao.push_back(movimentacao_credito);
-	cout << "Depósito realizado com sucesso" << endl;
-}
 
 /**
 * @brief Método para consulta do saque
@@ -283,4 +238,13 @@ void Conta::add_movimentacao(std::string descricao, double valor, std::string ti
 * @brief Destrutor da classe
 */
 Conta::~Conta() {
+}
+
+
+/**
+* @brief Método de acesso ao tipo da conta
+* @return tipo da conta
+*/
+int Conta::getTipoConta() const {
+	return tipo_conta;
 }
